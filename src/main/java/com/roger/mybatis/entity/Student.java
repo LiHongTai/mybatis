@@ -1,7 +1,6 @@
 package com.roger.mybatis.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,11 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Clazz implements Serializable {
-	private static final long serialVersionUID = -701185187603149567L;
-	
+public class Student implements Serializable {
+
+	private static final long serialVersionUID = -4111185377830356956L;
 	private Integer id;
 	private String name;
-	private Teacher teacher;
-	private List<Student> studList;
 }

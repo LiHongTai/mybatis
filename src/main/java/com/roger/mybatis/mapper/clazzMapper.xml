@@ -10,6 +10,10 @@
 			<id property="id" column="t_id"/>
 			<result property="name" column="t_name"/>
 		</association>
+		<collection property="studList" ofType="Student">
+			<id property="id" column="s_id"/>
+			<result property="name" column="s_name"/>
+		</collection>
 	</resultMap>
 	
 	<resultMap type="Clazz" id="classMapWithSelect">
@@ -17,10 +21,11 @@
 		<result property="name" column="c_name"/>
 		<association property="teacher" column="teacher_id" select="getTeacherById">
 		</association>
+		<collection property="studList" column="c_id" select="getStudentByClassId"></collection>
 	</resultMap>
 	
 	<select id="getById" parameterType="int" resultMap="classMapWithJavaTpye">
-		select * from class c,teacher t where c.teacher_id = t.t_id and c.c_id = #{id}
+		select * from class c,teacher t,student s where c.teacher_id = t.t_id and c.c_id = s.class_id and c.c_id = #{id}
 	</select>
 	
 	<select id="findAll" resultMap="classMapWithSelect">
@@ -29,6 +34,10 @@
 	
 	<select id="getTeacherById" parameterType="int" resultType="Teacher">
 		select t_id id,t_name name from teacher where t_id = #{id}
+	</select>
+	
+	<select id="getStudentByClassId" parameterType="int" resultType="Student">
+		select s_id id,s_name name from student where class_id = #{classId}
 	</select>
 	
 </mapper>
