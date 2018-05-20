@@ -24,6 +24,7 @@
 	<mappers>
 		<mapper resource="com/roger/mybatis/mapper/userMapper.xml"/>
 		<mapper resource="com/roger/mybatis/mapper/orderMapper.xml"/>
+		<mapper resource="com/roger/mybatis/mapper/clazzMapper.xml"/>
 	</mappers>
 	
 </configuration>
