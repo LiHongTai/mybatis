@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.roger.mybatis.BaseTestSuitCase;
-import com.roger.mybatis.entity.User;
+import com.roger.mybatis.condition.ConditionParam;
 
 public class UserTest extends BaseTestSuitCase{
 
@@ -41,6 +41,16 @@ public class UserTest extends BaseTestSuitCase{
 		String statement = PREFIX + "updateUser";
 		User user = new User(4, "Mary", 28);
 		session.update(statement, user);
+	}
+	
+	@Test
+	public void testGetByParam() {
+		ConditionParam param = new ConditionParam("o", 11, 21);
+		String statement = PREFIX + "getByParam";
+		List<User> users = session.selectList(statement,param);
+		System.out.println(users);
+		assertNotNull(users);
+		assertTrue(users.size() > 0);
 	}
 	
 }
